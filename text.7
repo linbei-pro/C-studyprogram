@@ -1,0 +1,48 @@
+class Student
+{
+public:
+	Student(int n, int a, float s) :num(n), age(a), score(s){}
+	void total();
+	static float average();
+
+private:
+	int num;
+	int age;
+	float score;
+	static float sum;     //静态数据成员sum
+	static int count;     //静态数据成员count
+};
+
+void Student::total()      //非静态成员函数
+{
+	sum += score;          //公用的成员函数可以引用本对象的一般数据成员，也可以引用类中的静态数据成员
+	count++;
+}
+
+float Student::average()   //定义静态成员函数
+{
+	return (sum / count);
+}
+
+float Student::sum = 0;
+int Student::count = 0;
+
+int main() {
+	Student stdu[3] = {
+		Student(10001,18,70),
+		Student(10002,19,78),
+		Student(10005,20,97)
+	};
+	int n=0;
+	cout << "please input the number of stdents :";
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		stdu[i].total();
+	}
+	cout << "the average score of " << n << " stdents is " << Student::average();
+	                                                         //调用静态成员函数
+
+
+	return 0;
+}
