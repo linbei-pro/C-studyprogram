@@ -1,0 +1,22 @@
+template<typename T>       //模板声明，T为类型参数
+T max(T a, T b,T c)
+{
+	if (b > a) a = b;
+	if (c > a) a = c;
+
+	return a;
+ }
+
+int main()
+{
+	int i1 = 8, i2 = 5,i3 = 6,i;
+	double d1 = 12.3, d2 = 3.14, d3 = 4.56, d;
+
+	i = max(i1, i2, i3);
+	d = max(d1, d2, d3);
+
+	cout << "i_max= " << i << endl;
+	cout << "f_max= " << d << endl;
+
+	return 0;
+}
