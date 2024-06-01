@@ -1,0 +1,36 @@
+template<class numtype>  //声明类模板，虚拟类型名为numtype
+class Compare
+{
+public:
+	Compare(numtype a, numtype b)
+	{
+		x = a; y = b;
+	}
+	numtype max()
+	{
+		return x > y ? x : y;
+	}
+
+	numtype min()
+	{
+		return x < y ? x : y;
+	}
+
+private:
+	numtype x,y;
+
+};
+
+int main()
+{
+	Compare<int> comp1(3, 7);    //定义对象comp1，用于两个整数的比较
+
+	cout << "max= " << comp1.max() << endl;
+	cout << "min= " << comp1.min() << endl;
+
+	Compare<float> comp2(3.14, 7.34);    //定义对象comp1，用于两个整数的比较
+
+	cout << "max= " << comp2.max() << endl;
+	cout << "min= " << comp2.min() << endl;
+
+}
