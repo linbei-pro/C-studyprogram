@@ -1,0 +1,63 @@
+class Student                     //声明基类
+{
+public:
+	Student(int n, string m)
+	{
+		num = n;
+		name = m;
+	}
+
+	void display()
+	{
+		cout << "num: " << num << endl;
+		cout << "name: " << name << endl;
+	}
+
+
+
+private:
+	int num;
+	string name;
+
+};
+
+class Student1 : public Student   //声明公用派生类student1
+{
+public:
+	Student1(int n, string m, int n1, string m1, int a, string ad)
+		:Student(n, m), monitor(n1, m1)     //派生类构造函数
+	{
+		age = a;
+		addr = ad;
+	}
+
+	void show()
+	{
+		cout << "This student is : " << endl;
+		display();                           //输出num和name
+		cout << "age : " << age << endl;
+		cout << "address : " << addr << endl;
+	}
+
+	void show_monitor()
+	{
+		cout << endl << "class monitor is :" << endl;
+		monitor.display();            //调用基类成员函数
+	}
+
+private:
+	Student monitor;               //定义子对象（班长）
+	int age;
+	string addr;
+};
+
+int main()
+{
+	Student1 stud1(10010, "wang_li", 10001, "li_jun", 19, "115 beijing road");
+
+	stud1.show();
+
+	stud1.show_monitor();
+
+	return 0;
+}
