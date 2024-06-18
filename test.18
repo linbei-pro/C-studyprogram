@@ -1,0 +1,65 @@
+class Teacher
+{
+public:
+	Teacher(string nam,int a,string ti)
+	{
+		name = nam;
+		age = a;
+		title = ti;
+	}
+	void display()
+	{
+		cout << "name: " << name << endl;
+		cout << "age: " << age << endl;
+		cout << "title: " << title<<endl;
+	}
+
+protected:
+	string name;
+	int age;
+	string title;
+};
+
+class Student
+{
+public:
+	Student(string nam, char a,float s)
+	{
+		name = nam;
+		sex = a;
+		score = s;
+	}
+	void display()
+	{
+		cout << "name: " << name<<endl;
+		cout << "sex:  " << sex << endl;
+		cout << "score:  " << score << endl;
+	}
+protected:
+	string name;
+	char sex;
+	float score;
+
+};
+
+class Graduate:public Teacher,public Student
+{
+public:
+	Graduate(string nam,int a,char s,string t,float sco,float w):Teacher(nam,a,t),Student(nam,s,sco),wage(w){}
+	void show()
+	{
+		cout << "name: " << Teacher::name << endl;
+		cout << "age: " << age << endl;
+		cout << "sex: " << sex << endl;
+		cout << "score: " << title << endl;
+		cout << "wages: " << wage << endl;
+	}
+private:
+	float wage;
+};
+
+int main() {
+	Graduate grad1("wang_li", 24, 'f', "assistant", 89.5, 2400);
+	grad1.show();
+	return 0;
+}
