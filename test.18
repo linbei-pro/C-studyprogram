@@ -45,7 +45,7 @@ protected:
 class Graduate:public Teacher,public Student
 {
 public:
-	Graduate(string nam,int a,char s,string t,float sco,float w):Teacher(nam,a,t),Student(nam,s,sco),wage(w){}
+	Graduate(string nam,int a,char s,string t,float sco,float w):Teacher(nam,a,t),Student(nam,s,sco),wage(w){}       //多重派生类的构造函数
 	void show()
 	{
 		cout << "name: " << Teacher::name << endl;
