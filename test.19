@@ -48,8 +48,8 @@ protected:
 class Graduate : public Teacher, public Student
 {
 public:
-	Graduate(string nam, char s, int a, string t, double sco, float w)        
-		:Person(nam, s, a), Teacher(nam, s, a, t), Student(nam, s, a, sco)
+	Graduate(string nam, char s, int a, string t, double sco, float w)        //应用虚基类时，派生类的构造函数要初始化所有基类
+		:Person(nam, s, a), Teacher(nam, s, a, t), Student(nam, s, a, sco)        //在本例中要初始化Person类
 	{
 		wage = w;
 	}
