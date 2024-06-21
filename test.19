@@ -1,0 +1,80 @@
+class Person
+{
+public:
+	Person(string nam, char s, int a)
+	{
+		name = nam;
+		sex = s;
+		age = a;
+	}
+
+
+protected:
+	string name;
+	char sex;
+	int age;
+};
+
+class Student : virtual public Person  //声明Person为公用继承的虚基类
+{
+public:
+	Student(string nam, char s, int a, double sco) :Person(nam, s, a)
+	{
+		score = sco;
+	}
+
+
+protected:
+	double score;
+
+};
+
+
+class Teacher : virtual Person
+{
+public:
+	Teacher(string nam, char s, int a, string ti) : Person(nam, s, a)
+	{
+		title = ti;
+	}
+
+
+protected:
+	string title;
+
+};
+
+
+class Graduate : public Teacher, public Student
+{
+public:
+	Graduate(string nam, char s, int a, string t, double sco, float w)        
+		:Person(nam, s, a), Teacher(nam, s, a, t), Student(nam, s, a, sco)
+	{
+		wage = w;
+	}
+
+	void show()
+	{
+		cout << "name: " << name << endl;
+		cout << "age: " << age << endl;
+		cout << "sex: " << sex << endl;
+		cout << "score: " << score << endl;
+		cout << "title: " << title << endl;
+		cout << "wage: " << wage << endl;
+	}
+
+
+private:
+	float wage;               //津贴
+
+};
+
+
+int main()
+{
+	Graduate grad("wang_li", 'f', 24, "assistant,", 89.99, 1200);
+	grad.show();
+
+	return 0;
+}
