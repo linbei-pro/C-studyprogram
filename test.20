@@ -1,0 +1,72 @@
+class Point
+{
+public:
+	Point(double x = 0.0, double y = 0.0);       //有默认参数的构造函数
+	void setpoint(double, double);               //设置坐标值的成员函数
+	double getX() const { return x; }            //读取x ，常成员函数
+	double getY() const { return y; }            //读取y ，常成员函数 
+
+	friend ostream& operator<<(ostream&, const Point&);  //友元重载函数
+
+protected:
+	double x, y;
+};
+
+//定义Point类的构造函数
+Point::Point(double a, double b)
+{
+	x = a; y = b;
+}
+
+//设置x和y的坐标值
+void Point::setpoint(double a, double b)
+{
+	x = a;
+	y = b;
+}
+
+//重载运算符"<<"
+ostream& operator<<(ostream& output, const Point &p)
+{
+	output << "[" << p.x << "," << p.y << "]" << endl;
+	return output;
+}
+
+
+class Circle : public Point
+{
+public:
+
+	Circle(double x = 0.0, double y = 0.0, double r = 0.0);
+	void setRadius(double);              //设置半径的函数
+	double getRadius() const;            //读取半径值的函数
+	double area() const;                 //计算园面积的函数
+	friend ostream& operator<<(ostream&, const Circle&);
+
+private:
+	double radius;
+
+};
+
+Circle::Circle(double x,double y,double r):Point(x,y),radius(r){}
+
+void Circle::setRadius(double r)
+{
+	radius = r;
+}
+
+double Circle::getRadius() const
+{
+	return radius;
+}
+
+double Circle::area() const
+{
+	return radius * radius * 3.14159;
+}
+
+ostream& operator<<(ostream& output, const Circle& c)
+{
+	output << "Center=[" << c.x << "," << c.y << "],r=" << c.radius << ",area=" << c.area() << endl;
+	return output;
+}
