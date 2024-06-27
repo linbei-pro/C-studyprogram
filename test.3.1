@@ -1,0 +1,56 @@
+class Student
+{
+public:
+	Student(int, string, double);
+	virtual void display();  //声明为虚函数，已实现动态多样性
+
+protected:
+	int num;
+	string name;
+	double score;
+
+};
+
+
+Student::Student(int n, string nam, double sco)
+{
+	num = n;
+	name = nam;
+	score = sco;
+}
+
+void Student::display()
+{
+	cout << "num: " << num << "\nname: " << name << "\nscore: " <<score<< "\n \n";
+}
+
+
+class Graduate :public Student
+{
+public:
+	Graduate(int, string, double, double);
+	void display();
+private:
+	double wage;
+};
+
+Graduate::Graduate(int n, string nam, double sco, double w):Student(n,nam,sco),wage(w){}
+
+void Graduate::display()
+{
+	cout << "num: " << num << "\nname: " << name << "\nscore: " <<score<<"\nwage: " << wage << endl;
+}
+
+int main()
+{
+	Student stud1(1001, "li", 87.5);
+	Graduate grad1(2001, "wang", 98.5, 1200);
+
+	Student* p = &stud1;
+	p->display();
+
+	p =&grad1;
+	p->display();
+
+	return 0;
+}
